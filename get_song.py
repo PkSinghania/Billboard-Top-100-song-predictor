@@ -14,11 +14,11 @@ def tracks_generator():
     song_tracks = list()
 
     while(curr_date < END_DATE):
-        chart = billboard.ChartData(CHART, date=curr_date, timeout=900)
+        chart = billboard.ChartData(CHART, date=curr_date, timeout=90)
 
         for tracks in chart:
             song_tracks.append( [ 1, tracks.title, tracks.artist ] )
-            #print(tracks.title + " " + tracks.artist)
+
         next_date = str( datetime.strptime(curr_date, '%Y-%m-%d') + timedelta(7) )
         regex = r"([0-9]{4})-([0-9]{2})-([0-9]{2})"
         arr = re.findall(regex, next_date)

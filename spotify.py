@@ -7,10 +7,6 @@ import requests
 import time
 
 thing = [[] for i in range(8)]
-logg = [0 for i in range(8)]
-
-def write_log():
-    print(sum(logg))
     
 def extract_feature(x, i):
 
@@ -42,26 +38,20 @@ def extract_feature(x, i):
 
 
 def feat_util(df, i):
+    
     for y,x in df.iterrows():
         extract_feature(x, i)
         logg[i]+=1
 
 def multi_thread(df):
-    print("{} to be done" .format(len(df)))
+    
     arr = [df[i::8] for i in range(8)]
-    c = len(arr[7])
     threads = []
     j = 0
     for i in range(8):
         p = Thread(target = feat_util, args = (arr[i], i))
         p.start()
         threads.append(p)
-
-    while(logg[7] < c):
-        q = Thread(target = write_log, args = ())
-        q.start()
-        time.sleep(5)
-        q.join()
         
     for i in threads:
         i.join()
