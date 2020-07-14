@@ -1,4 +1,4 @@
-"""combining wo csv"""
+"""combining two csv files"""
 
 import pandas as pd
 
