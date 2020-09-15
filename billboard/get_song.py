@@ -4,7 +4,7 @@ import billboard
 from datetime import datetime, timedelta 
 import re
 import pandas as pd
-import matplotlib.pyplot as plt
+
 
 START_DATE = '2000-01-01'
 END_DATE = '2018-01-01'
